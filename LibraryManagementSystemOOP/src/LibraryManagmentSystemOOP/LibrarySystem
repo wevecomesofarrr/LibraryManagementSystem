@@ -1,0 +1,41 @@
+package LibraryManagmentSystemOOP;
+import java.util.ArrayList;
+public class LibrarySystem {
+	//Fields
+    private ArrayList<Book> bookList;
+    
+    //Constructer
+    public LibrarySystem() {
+        bookList = new ArrayList<>();   
+        
+        //Sample data - addBook
+        addBook("B001", "Harry Potter", "J.K. Rowling");
+        addBook("B002", "The Hobbit", "J.R.R. Tolkien");
+        addBook("B003", "1984", "George Orwell");
+    }
+
+    //add a new book - method
+    public void addBook(String id, String title, String author) {
+        Book newBook = new Book(id, title, author);
+        bookList.add(newBook); 
+        System.out.println("Book added successfully.");
+    }
+
+    //display books 
+    public void displayAllBooks() {
+        System.out.println("--- All Books ---");
+        for (Book b : bookList) b.displayBookInfo();
+    }
+
+    //searsh for a books- method
+    public Book searchBookByTitle(String title) {
+        for (Book b : bookList) {
+            if (b.getTitle().equals(title)) {
+                b.displayBookInfo();
+                return b;
+            }
+        }
+        System.out.println("Book not found.");
+        return null;
+    }
+}
